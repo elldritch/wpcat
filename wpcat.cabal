@@ -1,0 +1,49 @@
+cabal-version: 3.0
+name:          wpcat
+version:       0.0.1
+build-type:    Simple
+
+common lang
+  build-depends:      base >=4.12 && <4.14
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    Arrows
+    ConstraintKinds
+    DataKinds
+    DefaultSignatures
+    DeriveFunctor
+    DeriveGeneric
+    DuplicateRecordFields
+    FlexibleContexts
+    FlexibleInstances
+    GeneralizedNewtypeDeriving
+    MultiParamTypeClasses
+    NamedFieldPuns
+    OverloadedStrings
+    RecordWildCards
+    ScopedTypeVariables
+    TemplateHaskell
+    TypeOperators
+
+  ghc-options:
+    -Wall -Wincomplete-uni-patterns -Wcompat
+    -Wincomplete-record-updates -Wmissing-home-modules
+    -Wmissing-export-lists -Wredundant-constraints
+
+  build-depends:      relude ==0.7.0.0
+
+executable wpcat
+  import:         lang
+  ghc-options:    -threaded -with-rtsopts=-N
+  hs-source-dirs: cmd/wpcat
+  main-is:        Main.hs
+
+  -- cabal-fmt: expand cmd/wpcat -Main
+  other-modules:
+  build-depends:
+    , scalpel == 0.6.2
+    , wreq == 0.5.3.2
+    , monad-extras == 0.6.0
+    , time == 1.9.3
+    , text == 1.2.4.0
